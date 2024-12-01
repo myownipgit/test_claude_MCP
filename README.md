@@ -1,27 +1,27 @@
-# Test Claude MCP (Multi-agent Collaborative Processing)
+# Test Claude MCP (Model Context Protocol)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 
 ## Overview
 
-This repository serves as a testing ground for exploring Claude's capabilities in multi-agent task processing and collaboration. It demonstrates how multiple AI agents can work together to solve complex problems through structured communication and task delegation.
+This repository serves as a testing ground for implementing Anthropic's Model Context Protocol (MCP), an open standard for connecting AI systems with data sources. The MCP provides a universal way to integrate various data sources with AI models, replacing fragmented integrations with a standardized protocol.
 
 ## Features
 
-- 🤖 Multi-agent system architecture
-- 🔄 Task delegation and coordination
-- 💬 Inter-agent communication protocols
-- 📊 Performance monitoring and optimization
-- 🛠️ Extensible framework for adding new agents
+- 🔄 Standardized data source integration
+- 🔌 Universal connection protocol
+- 🚀 Streamlined AI-data communication
+- 📊 Efficient data retrieval and context management
+- 🛠️ Extensible interface for different data sources
 
 ## Project Structure
 
 ```
 test_claude_MCP/
 ├── src/
-│   ├── agents/         # Individual agent implementations
-│   ├── tasks/          # Task definitions and handlers
+│   ├── connectors/     # Data source connectors
+│   ├── protocol/       # MCP implementation
 │   └── utils/          # Utility functions and helpers
 ├── tests/              # Test suite
 ├── docs/               # Documentation
@@ -56,19 +56,21 @@ pip install -r requirements.txt
 
 ## Usage
 
-Basic example of how to use the system:
+Basic example of how to implement MCP:
 
 ```python
-from mcp.agents import Agent
-from mcp.tasks import Task
+from mcp.protocol import MCPClient
+from mcp.connectors import DataSourceConnector
 
-# Initialize agents
-agent1 = Agent("Agent1")
-agent2 = Agent("Agent2")
+# Initialize MCP client
+client = MCPClient()
 
-# Create and assign tasks
-task = Task("Example task")
-result = agent1.collaborate_with(agent2, task)
+# Connect to a data source
+connector = DataSourceConnector("example_source")
+client.register_connector(connector)
+
+# Query data through MCP
+result = client.query("example query")
 ```
 
 ## Contributing
@@ -76,9 +78,9 @@ result = agent1.collaborate_with(agent2, task)
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create your feature branch (`git checkout -b feature/NewConnector`)
+3. Commit your changes (`git commit -m 'Add new data source connector'`)
+4. Push to the branch (`git push origin feature/NewConnector`)
 5. Open a Pull Request
 
 ## License
@@ -87,9 +89,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- Anthropic's Claude for providing the AI capabilities
+- Anthropic for developing the Model Context Protocol
 - Contributors and maintainers
 - Open source community
+
+## References
+
+- [Anthropic MCP Documentation](https://www.anthropic.com/news/model-context-protocol)
+- [Model Context Protocol Specification](https://github.com/anthropics/mcp)
 
 ## Contact
 
